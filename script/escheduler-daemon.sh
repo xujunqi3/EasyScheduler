@@ -28,8 +28,11 @@ export ESCHEDULER_LOG_DIR=$ESCHEDULER_HOME/logs
 export ESCHEDULER_CONF_DIR=$ESCHEDULER_HOME/conf
 export ESCHEDULER_LIB_JARS=$ESCHEDULER_HOME/lib/*
 
-export ESCHEDULER_OPTS="-server -Xmx16g -Xms4g -Xss512k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70"
+export ESCHEDULER_OPTS="-server -Xmx1g -Xms1g -Xss512k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70"
 export STOP_TIMEOUT=5
+
+# 增加环境变量刷新，解决ssh执行shell无法解析环境变量问题
+[ ! $JAVA_HOME ] && source $ESCHEDULER_CONF_DIR/env/.escheduler_env.sh
 
 if [ ! -d "$ESCHEDULER_LOG_DIR" ]; then
   mkdir $ESCHEDULER_LOG_DIR
@@ -74,6 +77,7 @@ case $startStop in
 
     exec_command="$LOG_FILE $ESCHEDULER_OPTS -classpath $ESCHEDULER_CONF_DIR:$ESCHEDULER_LIB_JARS $CLASS"
 
+    export JAVA_HOME=$JAVA_HOME
     echo "nohup $JAVA_HOME/bin/java $exec_command > $log 2>&1 < /dev/null &"
     nohup $JAVA_HOME/bin/java $exec_command > $log 2>&1 < /dev/null &
     echo $! > $pid

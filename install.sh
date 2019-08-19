@@ -36,65 +36,65 @@ source ${workDir}/conf/config/install_config.conf
 
 # mysql配置
 # mysql 地址,端口
-mysqlHost="192.168.xx.xx:3306"
+mysqlHost="10.50.180.71:3306"
 
 # mysql 数据库名称
 mysqlDb="escheduler"
 
 # mysql 用户名
-mysqlUserName="xx"
+mysqlUserName="escheduler"
 
 # mysql 密码
 # 注意：如果有特殊字符，请用 \ 转移符进行转移
-mysqlPassword="xx"
+mysqlPassword="escheduler"
 
 # conf/config/install_config.conf配置
 # 注意：安装路径,不要当前路径(pwd)一样
-installPath="/data1_1T/escheduler"
+installPath="/home/jyapp/escheduler-install"
 
 # 部署用户
 # 注意：部署用户需要有sudo权限及操作hdfs的权限，如果开启hdfs，根目录需要自行创建
-deployUser="escheduler"
+deployUser="jyapp"
 
 # zk集群
-zkQuorum="192.168.xx.xx:2181,192.168.xx.xx:2181,192.168.xx.xx:2181"
+zkQuorum="10.50.180.121:2181,10.50.180.122:2181,10.50.180.123:2181"
 
 # 安装hosts
 # 注意：安装调度的机器hostname列表，如果是伪分布式，则只需写一个伪分布式hostname即可
-ips="ark0,ark1,ark2,ark3,ark4"
+ips="10.50.180.60,10.50.180.61,10.50.180.71"
 
 # conf/config/run_config.conf配置
 # 运行Master的机器
 # 注意：部署master的机器hostname列表
-masters="ark0,ark1"
+masters="10.50.180.60,10.50.180.61"
 
 # 运行Worker的机器
 # 注意：部署worker的机器hostname列表
-workers="ark2,ark3,ark4"
+workers="10.50.180.60,10.50.180.61,10.50.180.71"
 
 # 运行Alert的机器
 # 注意：部署alert server的机器hostname列表
-alertServer="ark3"
+alertServer="10.50.180.60"
 
 # 运行Api的机器
 # 注意：部署api server的机器hostname列表
-apiServers="ark1"
+apiServers="10.50.180.60,10.50.180.61"
 
 # alert配置
 # 邮件协议
 mailProtocol="SMTP"
 
 # 邮件服务host
-mailServerHost="smtp.exmail.qq.com"
+mailServerHost="smtp.qq.com"
 
 # 邮件服务端口
-mailServerPort="25"
+mailServerPort="465"
 
 # 发送人
-mailSender="xxxxxxxxxx"
+mailSender="3068213915@qq.com"
 
 # 发送人密码
-mailPassword="xxxxxxxxxx"
+mailPassword="<Xujq123>"
 
 # TLS邮件协议支持
 starttlsEnable="false"
@@ -104,7 +104,7 @@ starttlsEnable="false"
 sslEnable="true"
 
 # 下载Excel路径
-xlsFilePath="/tmp/xls"
+xlsFilePath="/home/jyapp/escheduler-xls"
 
 # 企业微信企业ID配置
 enterpriseWechatCorpId="xxxxxxxxxx"
@@ -141,7 +141,7 @@ yarnHaIps="192.168.xx.xx,192.168.xx.xx"
 singleYarnIp="ark1"
 
 # hdfs根路径，根路径的owner必须是部署用户。1.1.0之前版本不会自动创建hdfs根目录，需要自行创建
-hdfsPath="/escheduler"
+hdfsPath="/home/jyapp/escheduler"
 
 # 拥有在hdfs根路径/下创建目录权限的用户
 # 注意：如果开启了kerberos，则直接hdfsRootUser=""，就可以
@@ -149,13 +149,13 @@ hdfsRootUser="hdfs"
 
 # common 配置
 # 程序路径
-programPath="/tmp/escheduler"
+programPath="/home/jyapp/escheduler-tmp"
 
 #下载路径
-downloadPath="/tmp/escheduler/download"
+downloadPath="/home/jyapp/escheduler-tmp/download"
 
 # 任务执行路径
-execPath="/tmp/escheduler/exec"
+execPath="/home/jyapp/escheduler-tmp/exec"
 
 # SHELL环境变量路径
 shellEnvPath="$installPath/conf/env/.escheduler_env.sh"
@@ -181,31 +181,31 @@ keytabPath="$installPath/conf/hdfs.headless.keytab"
 
 # zk 配置
 # zk根目录
-zkRoot="/escheduler"
+zkRoot="/home/jyapp/escheduler"
 
 # 用来记录挂掉机器的zk目录
-zkDeadServers="/escheduler/dead-servers"
+zkDeadServers="/home/jyapp/escheduler/dead-servers"
 
 # masters目录
-zkMasters="/escheduler/masters"
+zkMasters="/home/jyapp/escheduler/masters"
 
 # workers目录
-zkWorkers="/escheduler/workers"
+zkWorkers="/home/jyapp/escheduler/workers"
 
 # zk master分布式锁
-mastersLock="/escheduler/lock/masters"
+mastersLock="/home/jyapp/escheduler/lock/masters"
 
 # zk worker分布式锁
-workersLock="/escheduler/lock/workers"
+workersLock="/home/jyapp/escheduler/lock/workers"
 
 # zk master容错分布式锁
-mastersFailover="/escheduler/lock/failover/masters"
+mastersFailover="/home/jyapp/escheduler/lock/failover/masters"
 
 # zk worker容错分布式锁
-workersFailover="/escheduler/lock/failover/workers"
+workersFailover="/home/jyapp/escheduler/lock/failover/workers"
 
 # zk master启动容错分布式锁
-mastersStartupFailover="/escheduler/lock/failover/startup-masters"
+mastersStartupFailover="/home/jyapp/escheduler/lock/failover/startup-masters"
 
 # zk session 超时
 zkSessionTimeout="300"
@@ -267,7 +267,7 @@ apiServerPort="12345"
 apiServerSessionTimeout="7200"
 
 # api 上下文路径
-apiServerContextPath="/escheduler/"
+apiServerContextPath="/home/jyapp/escheduler/"
 
 # spring 最大文件大小
 springMaxFileSize="1024MB"
